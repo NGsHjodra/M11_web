@@ -15,11 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('puuid')->nullable()->unique();
+            $table->string('summoner_id')->nullable()->unique();
             $table->string('name');
             $table->string('tagline');
+            
+            $table->string('tier')->nullable();
+            $table->string('rank')->nullable();
+            $table->unsignedTinyInteger('point')->nullable();
             $table->timestamps();
-            $table->string('summoner_id')->nullable()->unique();
-            $table->string('rating')->nullable();
 
             // Adding the unique constraint on name and tagline combination
             $table->unique(['name', 'tagline'], 'unique_name_tagline');
