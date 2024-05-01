@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'riot' => [
+        'api_key' => env('RIOT_API_KEY'),
+    ],    
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

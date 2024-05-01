@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import postcss from './postcss.config.js';
 
 export default defineConfig({
     plugins: [
@@ -11,4 +12,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    css: {
+        postcss,
+    },
 });
