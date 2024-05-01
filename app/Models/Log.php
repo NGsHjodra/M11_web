@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Log extends Model
 {
     use HasFactory;
+    protected $fillable = ['puuid', 'match_id', 'placement', 'participants'];
+    // protected $hidden = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'puuid', 'puuid');
+    }
 }

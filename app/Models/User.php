@@ -10,12 +10,12 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['name', 'tagline'];
-    protected $hidden = ['summoner_id', 'tier', 'rank', 'point', 'created_at'];
+    protected $guarded = [];
+    // protected $hidden = ['puuid', 'summoner_id', 'tier', 'rank', 'point'];
 
     public function logs()
     {
-        return $this->hasMany(Log::class);
+        return $this->hasMany(Log::class, 'puuid', 'puuid');
     }
 }
 
