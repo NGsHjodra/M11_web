@@ -10,7 +10,7 @@ class LeaderboardController extends Controller
 {
     public function index()
     {
-        $leaders = User::query()
+        $players = User::query()
             ->orderByRaw("CASE tier
                 WHEN 'CHALLENGER' THEN 1
                 WHEN 'GRANDMASTER' THEN 2
@@ -33,6 +33,6 @@ class LeaderboardController extends Controller
             ->take(10)
             ->get();
 
-        return view('welcome', compact('leaders'));
+        return view('welcome', compact('players'));
     }
 }

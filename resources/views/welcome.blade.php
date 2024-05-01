@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1>Leaderboard</h1>
+<x-site-layout title="Leaderboard">
+    <div class="container mx-auto text-center">
         <table class="table">
             <thead>
                 <tr>
@@ -18,16 +9,39 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($leaders as $leader)
+                @foreach ($players as $player)
                     <tr>
-                        <td>{{ $leader->name }}#{{ $leader->tagline }}</td>
-                        <td>{{ $leader->tier }} {{ $leader->rank }}</td>
-                        <td>{{ $leader->point }}</td>
+                        <td>
+                            <a href="{{ route('player_show', $player->puuid) }}">
+                                {{ $player->name."#".$player->tagline}}
+                            </a>
+                        </td>
+                        <td>{{ $player->tier }} {{ $player->rank }}</td>
+                        <td>{{ $player->point }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
-</body>
-</html>
+    <button id="openModal" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+        Add User
+    </button>
+</x-site-layout>
+
+@include('components.user-modal')
+
+<script>
+    const openModal = document.getElementById('openModal');
+    const modal = document.getElementById('userModal');
+    const overlay = document.getElementById('modalOverlay');
+
+    openModal.addEventListener('click', function () {
+        modal.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+    });
+
+    overlay.addEventListener('click', function () {
+        modal.classList.add('hidden');
+        overlay.classList.add('hidden');
+    });
+</script>
