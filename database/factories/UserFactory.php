@@ -12,6 +12,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'puuid' => $this->faker->uuid,
             'name' => $this->faker->name,
             'tagline' => $this->faker->word,
             'tier' => $this->faker->randomElement(['IRON', 'BRONZE', 'SILVER', 'GOLD', 'PLATINUM', 'DIAMOND', 'MASTER', 'GRANDMASTER', 'CHALLENGER']),
