@@ -18,7 +18,9 @@ class PlayerController extends Controller
             return redirect('/')->with('error', 'Player not found.');
         }
 
-        $matches = Log::where('puuid', $puuid)->latest()->take(20)->get();
+        $matches = $user->logs()->get()->sortByDesc(function ($match) {
+            return substr($match->match_id, 4);
+        });
 
         return view('player_show', compact('user', 'matches'));
     }
