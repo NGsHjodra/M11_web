@@ -12,6 +12,7 @@ class User extends Authenticatable
 
     protected $guarded = [];
     // protected $hidden = ['puuid', 'summoner_id', 'tier', 'rank', 'point'];
+    // protected $dates = ['last_match_history_update'];
 
     public function logs()
     {

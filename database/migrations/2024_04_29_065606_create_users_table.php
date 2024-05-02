@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('tier')->nullable();
             $table->string('rank')->nullable();
             $table->unsignedTinyInteger('point')->nullable();
+            $table->date('last_match_history_updated')->nullable();
+
             $table->timestamps();
 
             // Adding the unique constraint on name and tagline combination
